@@ -54,3 +54,20 @@ for name in names:
 # => Bob
 # => Charlie
 ```
+
+## 大文字小文字変換
+
+`upper()` `lower()` でできる。  
+非破壊的なメソッド。
+
+```python
+hoge = 'HOgE'
+hoge.upper()
+# => 'HOGE'
+hoge
+# => 'HOgE'
+hoge.lower()
+# => 'hoge'
+hoge
+# =>'HOgE'
+```
