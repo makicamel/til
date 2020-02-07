@@ -71,3 +71,19 @@ hoge.lower()
 hoge
 # =>'HOgE'
 ```
+
+## bool値への変換
+
+refs: [Pythonの真偽値bool型（True, False）と他の型との変換・判定 | note.nkmk.me](https://note.nkmk.me/python-bool-true-false-usage/)
+
+Python での bool 値は 1, 0 と等価。  
+他の型から bool 値への変換は組み込み関数 `bool()` で行える。  
+
+```python
+bool(1)
+# => True
+bool(0)
+# => False
+bool(None)
+# => False
+```
