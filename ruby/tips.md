@@ -55,3 +55,19 @@ foo = foo(1)
 foo = foo(foo, foo(1, 2))
 # => ArgumentError (wrong number of arguments (given 2, expected 1))
 ```
+
+## gem のディレクトリをエディタでオープンする
+
+`bundle open {gem}` で gem をオープン、プリントデバッグや binding.pry を仕込める。  
+環境変数 `EDITOR` にどのエディタを使うのか設定しておく必要がある。  
+例えば vim なら `export EDITOR=/usr/bin/vim` 。  
+なお、 `bundle pristine {gem}` で再インストールが行われ、元に戻せる。  
+
+```bash
+bundle open devise
+bundle pristine devise
+```
+
+irb で require している gem は `bundle open` 後 `load` しても更新が適用されない。  
+irb の再起動で適用された。  
+(おそらく他にも方法はあるような気がしている)  
