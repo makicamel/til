@@ -24,6 +24,28 @@ ref: [Elasticsearchチュートリアル | 不可視点](http://code46.hatenablo
 }
 ```
 
+### 空のフィールドをクエリする
+
+refs: [nullではなく空ではないElasticsearch curlクエリを作成します | TutorialMore](https://tutorialmore.com/questions-1154656.htm)
+
+`exists` を使用して取得できる
+
+```bash
+curl -XGET 'http://127.0.0.1:9200/test/test/_search?pretty=1'  -d '
+{
+   "query" : {
+      "constant_score" : {
+         "filter" : {
+            "exists" : {
+               "field" : "myfield"
+            }
+         }
+      }
+   }
+}
+'
+```
+
 ## upsert
 
 ref: [elasticsearch : upsert の使い方 | Qiita](https://qiita.com/uturned0/items/582ddbdad87074a88c48)
