@@ -106,3 +106,12 @@ filename = '2020-02-21-01-{key}.txt'.format(key=key)
 # => '2020-02-21-01-hoge.txt'
 ```
 
+## 日付の利用
+
+`datetime` ライブラリを使用する。
+
+```python
+import datetime
+>>> datetime.date.today()
+# => datetime.date(2020, 2, 21)
+```
