@@ -14,3 +14,16 @@ expect([:a, :c, :b]).to contain_exactly(:a, :c)  # => fail
 expect([1, 2, 3]).to eq [1, 2, 3] # => pass
 expect([1, 2, 3]).to eq [2, 1, 3] # => fail
 ```
+
+## lib ディレクトリ以下ファイルのテスト
+
+refs: [ruby on rails - Correct way to test lib folder with rspec? - Stack Overflow](https://stackoverflow.com/questions/21544519/correct-way-to-test-lib-folder-with-rspec)
+
+> `require 'parser'` is the recommended way. RSpec puts `lib` on the `$LOAD_PATH`
+
+RSpec は `lib` 以下を読み込むので、　`lib` 以下を　`require` する。
+
+```ruby
+# lib/helpers/foo.rb の spec の場合
+require "helpers/foo"
+```
