@@ -4,7 +4,12 @@
 
 `PUT` で index に対し json を渡すことで mapping の作成ができる。  
 更新の場合、追加したいフィールドだけ json で渡すことで追加ができる。  
-※ **mapping はフィールドの追加はできるが更新はできない。**  
+
+- **mapping はフィールドの追加はできるが更新はできない。**
+- mapping の追加のみであれば既存の index に影響はなく、 reindex や update は不要
+(既存 index にデフォルト値などを指定したい場合は勿論 update が必要)
+- なお、 template の変更の場合はまた違うはず(要確認)
+- また例えば analyzer を変更したい場合などは次回から index したドキュメントに対してのみ analyzer の変更が有効になるので、その場合は reindex や update が必要
 
 ```bash
 PUT blog/_mapping/_doc
