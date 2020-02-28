@@ -128,3 +128,13 @@ import datetime
 >>> datetime.date.today()
 # => datetime.date(2020, 2, 21)
 ```
+
+## 条件式
+
+`if a == False` は `not a` で表現できる。
+
+```python
+a = False
+if not a:
+    print("False")
+```
