@@ -106,6 +106,19 @@ filename = '2020-02-21-01-{key}.txt'.format(key=key)
 # => '2020-02-21-01-hoge.txt'
 ```
 
+## 文字列の置換
+
+`replace` メソッドを使う。破壊的なメソッドではなく、置換後の文字列を返す。
+
+```python
+a = "hoge"
+b = a.replace("ho","fu")
+print(a)
+# => "hoge"
+print(b)
+# => "fuge"
+```
+
 ## 日付の利用
 
 `datetime` ライブラリを使用する。
