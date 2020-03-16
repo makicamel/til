@@ -76,6 +76,37 @@ options_for_select([["選択しない", nil], ["男性", 0], ["女性", 1]])
 <option value="1">女性</option>
 ```
 
+## label, label_tag
+
+official: [label (ActionView::Helpers::FormHelper) - APIdock](https://apidock.com/rails/ActionView/Helpers/FormHelper/label)  
+official: [label_tag (ActionView::Helpers::FormTagHelper) - APIdock](https://apidock.com/rails/ActionView/Helpers/FormTagHelper/label_tag)
+
+`label(object_name, method, content_or_options = nil, options = nil, &block)`
+
+```ruby
+label(object_name, method, content_or_options, options = {})
+# =>
+<label for="#{object_name}_#{method}">content_or_options</label>
+```
+
+`label_tag(name = nil, content_or_options = nil, options = nil, &block)`
+
+```ruby
+label_tag(name, content_or_options=nil, options = {})
+# content_or_optionsがnilの時は、content_or_options=name
+# =>
+<label for="name">content_or_options</label>
+```
+
+ただし次の項のようにフィールドが配列となっている時はこの書き方だと期待通りの挙動とならない(document 中のひとつめの要素と一致してしまう)ので `label_tag "" do ... end` で囲う必要がある。
+
+```ruby
+<%= label_tag "" do %>
+  <%= check_box_tag "standard[standard_items][][should_display]", 1 %>
+  表示する
+<% end %>
+```
+
 ## フィールドを配列で扱いたい場合
 
 FormHelper ではなく FormTagHelper を使う
