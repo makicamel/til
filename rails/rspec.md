@@ -27,3 +27,30 @@ RSpec は `lib` 以下を読み込むので、　`lib` 以下を　`require` す
 # lib/helpers/foo.rb の spec の場合
 require "helpers/foo"
 ```
+
+## reload or exist
+
+[神速さんに教えて頂いた](https://twitter.com/sinsoku_listy/status/1240304340742467584?s=20)
+
+レコードを作って存在チェックや関連付けの検証をする時、何もしないと反映されておらず、関連付けが返ってこない。  
+`reload` で解決できる。
+
+```ruby
+user = FactoryBot.create(:user)
+article = FactoryBot.create(:article, user: user, title: "test")
+expect(user.article.title).to eq "test"
+# => failure
+
+user.reload
+expect(user.article.title).to eq "test"
+# => success
+```
+
+存在チェックであれば、文字通り `be_exists` を使った方がスマートに書ける。  
+(条件 A は返ってくるが、条件 B のレコードは返ってこない、という書き方には向かなそう)
+
+```ruby
+user = FactoryBot.create(:user)
+article = FactoryBot.create(:article, user: user, title: "test")
+expect(Article).to be_exists(id: article.id, user: user, title: "test")
+```
