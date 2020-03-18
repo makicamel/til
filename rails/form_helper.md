@@ -48,6 +48,21 @@ official: [check_box (ActionView::Helpers::FormHelper) - APIdock](https://apidoc
 <input type="checkbox" name="book[on_sale]" id="book_on_sale" value="1" checked="checked">
 ```
 
+## select
+
+`select(method, choices = nil, options = {}, html_options = {}, &block)`
+
+`selected` を指定する場合は `options_for_select` の第 2 引数に `selected` を指定する。  
+オブジェクトの値は `f.object.hoge` で取得できる。  
+ex. `selected: f.object.sex`
+
+```ruby
+<%= form_for @post do |f| %>
+  <%= f.select :person_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true %>
+  <%= f.submit %>
+<% end %>
+```
+
 ## select_tag
 
 `select_tag(name, option_tags = nil, options = {})`
