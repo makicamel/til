@@ -28,6 +28,17 @@ RSpec は `lib` 以下を読み込むので、　`lib` 以下を　`require` す
 require "helpers/foo"
 ```
 
+## module のテスト
+
+module は include されて実行するので、テストも include する必要がある。  
+include する class を本来の class とすると係数が増えるので、テストのシンプルさを保つために Struct を使う。  
+(※ Struct を使う必然性はない、なんらかの class が提供できればよい)
+
+```ruby
+let(:normalizer) { Struct.new(:normalizer) { include SizeNormalizer } }
+subject { normalizer.new.convert }
+```
+
 ## reload or exist
 
 [神速さんに教えて頂いた](https://twitter.com/sinsoku_listy/status/1240304340742467584?s=20)
