@@ -3,10 +3,10 @@
 
 n, k = gets.split.map(&:to_i)
 
-hash = {}
+hash = Hash.new 0
 n.times do
   a, b = gets.split.map(&:to_i)
-  hash[a] = hash.has_key?(a) ? hash[a] + b : b
+  hash[a] += b
 end
 
 hash.sort.each do |a, b|
