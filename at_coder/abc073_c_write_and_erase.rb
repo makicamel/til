@@ -6,7 +6,7 @@ as = [].tap { |array| n.times { array << gets.to_i } }
 hash = {}
 
 as.each do |a|
-  hash[a] = hash[a] ? nil : 1
+  hash[a] ? hash.delete(a) : hash[a] = 1
 end
 
-puts hash.select { |_, v| v }.size
+puts hash.keys.size
