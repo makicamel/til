@@ -3,14 +3,17 @@
 
 s, t = Array.new(2) { gets.chomp }
 
-if s.match(t)
-  puts s.gsub("?", "a")
-  exit
+answers = []
+(s.size - t.size + 1).times do |i|
+  tmp = s.dup
+  if tmp[i...i + t.size].chars.map.with_index { |char, j| ["?", t[j]].include? char }.all?
+    t.size.times { |j| tmp[i + j] = t[j] }
+    answers << tmp.gsub("?", "a")
+  end
 end
 
-regexp = Regexp.new "^(.*?)(#{t.chars.map { |char| "[#{char}|¥?]" }.join})(.*)$"
-if matched = s.match(regexp)
-  puts "#{matched[1]}#{t}#{matched[3]}".gsub("?", "a")
-else
+if answers.empty?
   puts "UNRESTORABLE"
+else
+  puts answers.min
 end
