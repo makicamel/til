@@ -1,17 +1,9 @@
 # B 3人でカードゲームイージー
 # https://atcoder.jp/contests/abc045/tasks/abc045_b
 
-a, b, c = Array.new(3) { gets.chomp.chars }
+cards = %w[a b c].zip(Array.new(3) { gets.chomp.chars }).to_h
 
-n = a
-winner = 0
-while winner.zero?
-  n = case n.shift
-      when "a" then a
-      when "b" then b
-      when "c" then c
-  end
-  winner = n.object_id if n.empty?
-end
+i = "a"
+i = cards[i].shift until cards[i].empty?
 
-puts winner == a.object_id ? "A" : winner == b.object_id ? "B" : "C"
+puts i.upcase
